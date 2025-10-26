@@ -117,11 +117,13 @@ def feed_logger(records: List[Dict[str, Any]]) -> None:
 
 def records_average(df_records: list[Dict[str, Any]]) -> pd.DataFrame:
     avg = df_records[AVG_COLUMNS].mean()
-    current_time = df_records.iloc[-1]["Minutes1UTC"]
+    current_record = df_records.iloc[-1]
+    current_time = current_record["Minutes1UTC"]
     final = {}
     final["Minutes1UTC"] = current_time
     for col in AVG_COLUMNS:
         final[f"{col}_avg"] = avg[col]
+        final[col] = current_record[col]
 
     return pd.DataFrame([final])
 
