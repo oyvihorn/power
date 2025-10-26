@@ -2,3 +2,4 @@
 /.venv
 /energidata.p
 /workspace.code-workspace
+.DS_Store
